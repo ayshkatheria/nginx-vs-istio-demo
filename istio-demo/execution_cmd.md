@@ -36,3 +36,11 @@ http:
 👉 No app changes
 👉 No proxy reload
 👉 No central bottleneck
+
+```yaml
+Generate traffic
+for i in {1..100}; do
+  kubectl exec -it deploy/app-v1 -- curl -s http://app > /dev/null
+done
+
+```
