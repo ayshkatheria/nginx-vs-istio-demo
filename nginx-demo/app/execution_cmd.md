@@ -7,6 +7,10 @@ NGINX Ingress Controller
 |                       |
 /app1 → app1 service   /app2 → app2 service
 
+Note:
+NGINX is NOT used to create an ALB.
+NGINX is only used to ROUTE traffic AFTER it reaches the cluster.
+
 ```
 
 ```yaml
