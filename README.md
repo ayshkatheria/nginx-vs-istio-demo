@@ -1,6 +1,6 @@
 # nginx-vs-istio-demo
 
-'''yaml
+```yaml
 nginx-vs-istio-demo/
 │
 ├── README.md
@@ -30,4 +30,4 @@ nginx-vs-istio-demo/
 │
 └── demo-script/
     └── live-demo-steps.md
-'''
+```
