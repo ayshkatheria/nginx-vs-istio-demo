@@ -20,3 +20,51 @@ Create peer-authentication-strict.yaml
 
 Step 3 — Enforce mTLS on clients (client-side)
 destination-rule-istio-mutual.yaml
+
+> kubectl apply -f destination-rule-istio-mutual.yaml
+
+Step 4 — Test mTLS traffic (should WORK)
+
+> kubectl exec -it \
+  "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" \
+  -c ratings -- curl -s productpage:9080/productpage | grep "<title>"
+
+expected o/p:
+
+<title>Simple Bookstore App</title>
+
+
+Step 5 — Verify at Envoy level (optional but strong proof)
+
+>kubectl exec -it \
+  "$(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}')" \
+  -c istio-proxy -- \
+  curl -s localhost:15000/config_dump | grep -i require_client_certificate
+
+  expected o/p : "require_client_certificate": true
+
+  Step 6 — Rollback to PERMISSIVE (if needed)
+
+  >kubectl delete peerauthentication default -n default  
+  >kubectl delete destinationrule default-mtls -n default
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
