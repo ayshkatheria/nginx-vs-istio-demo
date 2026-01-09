@@ -14,3 +14,9 @@ If not:
 
 Step 2 — Enable STRICT mTLS (server-side)
 Create peer-authentication-strict.yaml
+
+>kubectl apply -f peer-authentication-strict.yaml
+>kubectl get peerauthentication -n default
+
+Step 3 — Enforce mTLS on clients (client-side)
+destination-rule-istio-mutual.yaml
