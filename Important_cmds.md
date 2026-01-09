@@ -22,10 +22,7 @@ kubectl exec -n default \
   | grep -i tls
 
 
-```yaml
 To access the Bookinfo app from outside the cluster when using Istio, you expose it through the Istio Ingress Gateway.
-
-```
 
 1. Verify Istio Ingress Gateway is running
 
@@ -56,6 +53,5 @@ Note: Make sure your EC2 Security Group allows that NodePort range (30000–3276
 Option B — Port-forward (quick test, no SG changes)
 kubectl port-forward -n istio-system svc/istio-ingressgateway 8080:80
 http://localhost:8080/productpage
-```
 
 ```
