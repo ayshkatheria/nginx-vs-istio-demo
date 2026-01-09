@@ -50,7 +50,33 @@ Step 5 — Verify at Envoy level (optional but strong proof)
 
 ```
 
+```yaml 
 
+Pod A  ───────▶  Pod B
+(client)          (server)
+
+Client = the pod making the request
+
+Server = the pod receiving the request
+
+Both have Envoy sidecars
+
+Envoy handles mTLS, not your application code
+
+
+Client Pod
+  └── Envoy (has cert)
+        │
+        │  mTLS (cert + encryption)
+        ▼
+Server Envoy
+  └── STRICT PeerAuthentication
+        │
+        ▼
+Service
+
+
+```
 
 
 
