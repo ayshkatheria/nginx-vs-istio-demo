@@ -25,6 +25,8 @@ kubectl exec -n default \
 ```yaml
 To access the Bookinfo app from outside the cluster when using Istio, you expose it through the Istio Ingress Gateway.
 
+```
+
 1. Verify Istio Ingress Gateway is running
 
 >kubectl get pods -n istio-system -l app=istio-ingressgateway
